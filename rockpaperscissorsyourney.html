@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+//COMPUTER PLAY FUNCTION SELECTS COMPUTER CHOICE
+function computerPlay() {
+    randNum = Math.random()
+    computerSelection = "blank"
+    console.log(randNum)
+
+    if (randNum < 0.33) {
+        computerSelection = "rock"}
+    else if (randNum > 0.66) {
+        computerSelection = "scissors"}
+    else {
+        computerSelection = "paper"}
+    console.log(computerSelection)  
+}
+
+
+//PLAYS A SINGLE ROUND
+function singleRound(){
+    computerPlay()
+playerSelection = window.prompt("Do you choose rock, paper, or scissors?","Anwser Here");
+console.log(playerSelection)
+playerSelection = playerSelection.toLowerCase()
+console.log(playerSelection)
+
+if (playerSelection == "rock") {
+    if (computerSelection == "rock"){
+        console.log("Tie")
+        alert("Tie, rock ties rock")}
+    else if (computerSelection == "paper"){
+        console.log("You Lose")
+        alert("You lose! Paper beats rock")
+        score --}
+    else {
+        console.log("You Win")
+        alert("You Win! Rock beats scissors")
+        score ++}
+}
+else if (playerSelection == "paper"){
+    if (computerSelection == "rock"){
+        console.log("You Win")
+        alert("You Win! Paper beats rock.")
+        score ++}
+    else if (computerSelection == "paper"){
+        console.log("Tie")
+        alert("You Tie! Paper ties paper")}
+    else {
+        console.log("You Lose")
+        alert("You Lose! Scissors beat paper")
+        score --}
+}
+else if (playerSelection == "scissors"){
+    if (computerSelection == "rock"){
+        console.log("You lose")
+        alert("You Lose! Rock beats scissors")
+        score --}
+    else if (computerSelection == "paper"){
+        console.log("You win")
+        alert("You Win! Scissors beats paper")
+        score ++}
+    else {
+        console.log("tie")
+        alert("Tie! Scissors teis with scissors")}
+}
+else {
+    alert("Please enter rock, paper, or scissors");
+}
+console.log(score)
+document.getElementById("playerDisplay").innerHTML = playerSelection;
+document.getElementById("computerDisplay").innerHTML = computerSelection;
+}
+
+function fiveRounds(){
+    score = 0
+    text = "Begin "
+    singleRound()
+    singleRound()
+    singleRound()
+    singleRound()
+    singleRound()
+    if (score > 0){
+        alert("You won the game!");
+        text += "<br>" + "You won the game!";
+    }
+    else if (score < 0){
+        alert("You lost the game");
+        text += "<br>" + "You lost the game";
+    }
+    else{
+        alert("Tie match");
+        text += "<br>" + "Tie match";
+    }
+    document.getElementById("roundCount").innerHTML = text;
+}
+
+
+</script>
+<title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h1>Lets Play a game</h1>
+    <p>We will play 5 games with the winner declared at the end.</p>
+    <button onclick="fiveRounds()">Begin</button>
+    <p id="roundCount"></p>
+    <p id="playerDisplay"></p> 
+    <p id="computerDisplay"></p>
+
+
+</body>
+
+
+
+</html>
